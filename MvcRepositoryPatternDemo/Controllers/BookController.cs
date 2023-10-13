@@ -15,14 +15,23 @@ namespace MvcRepositoryPatternDemo.Controllers
             _context = context;
             _bookRepository = bookRepository;
         }
-
         #region List of Books
-        public IActionResult Index()
+        public IActionResult Index(int? page)
         {
-          //var books = from b in _bookRepository.GetBooks() 
-          //            select b;
-          //            return View(books);
-            var books = _bookRepository.GetBooks();
+            int pageSize = 5; // Number of items per page
+            int pageNumber = page ?? 1;
+
+            var books = _bookRepository.GetBooks()
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            var totalBooks = _bookRepository.GetBooks().Count();
+            var totalPages = (int)Math.Ceiling(totalBooks/ (double)pageSize);
+
+            ViewData["TotalPages"] = totalPages;
+            ViewData["CurrentPage"] = pageNumber;
+
             return View(books);
         }
         #endregion

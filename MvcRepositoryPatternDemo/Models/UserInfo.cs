@@ -1,6 +1,7 @@
-﻿namespace JWTAuthDemo.Entities
+﻿namespace MvcRepositoryPatternDemo.Models
 {
-    public class User
+
+    public class UserInfo
     {
         public long UserId { get; set; }
         public string UserName { get; set; }

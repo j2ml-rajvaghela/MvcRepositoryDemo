@@ -34,6 +34,12 @@ namespace MvcRepositoryPatternDemo.Configuration
                 .HasColumnName("price")
                 .HasColumnType("decimal(18,2)")
                 .IsRequired();
+
+            //builder
+            //   .Property(b => b.BookImage)
+            //   .HasColumnName("book_image")
+            //   .HasColumnType("varbinary(max)")
+            //   .IsRequired();
         }
     }
 }

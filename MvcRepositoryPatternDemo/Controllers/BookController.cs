@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MvcRepositoryPatternDemo.DAL;
 using MvcRepositoryPatternDemo.Models;
 using System.Data;
@@ -20,11 +21,10 @@ namespace MvcRepositoryPatternDemo.Controllers
         {
             int pageSize = 5; // Number of items per page
             int pageNumber = page ?? 1;
-
             var books = _bookRepository.GetBooks()
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
-                .ToList();
+                          .Skip((pageNumber - 1) * pageSize)
+                          .Take(pageSize)
+                          .ToList();
 
             var totalBooks = _bookRepository.GetBooks().Count();
             var totalPages = (int)Math.Ceiling(totalBooks/ (double)pageSize);

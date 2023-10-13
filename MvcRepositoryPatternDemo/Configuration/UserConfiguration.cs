@@ -1,13 +1,14 @@
-﻿using JWTAuthDemo.Entities;
+﻿
 using Microsoft.EntityFrameworkCore;
+using MvcRepositoryPatternDemo.Models;
 
 namespace JWTAuthDemo.Configuration
 {
-    public class UserConfiguration : IEntityTypeConfiguration<User>
+    public class UserConfiguration : IEntityTypeConfiguration<UserInfo>
     {
-        public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<User> builder)
+        public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<UserInfo> builder)
         {
-            builder.ToTable("user");
+            builder.ToTable("user_info");
             builder.HasKey(u => u.UserName);
 
             builder

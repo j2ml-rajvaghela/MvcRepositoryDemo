@@ -10,5 +10,6 @@ namespace MvcRepositoryPatternDemo.Models
         public string Title { get; set; }
         public string Auther { get; set; }
         public decimal Price { get; set; }
+        //public byte[] BookImage { get; set; }
     }
 }

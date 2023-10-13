@@ -22,6 +22,7 @@ namespace MvcRepositoryPatternDemo.Controllers
             _configuration = configuration;
         }
         #region Login
+        [HttpGet("/login")]
         public ActionResult Login()
         {
             return View();
